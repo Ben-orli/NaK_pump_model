@@ -46,14 +46,17 @@
 
 # TODO: make mlab figure and attach to bif.lyx
   
-#dV/dt=-1/c*(gKs*mKs^4*(V-EK) + gKf*mKf^4*(fh*hKf+(1-fh)*hKf2)*(V-EK) + gNa*mNa^3*hNa*(V-ENa) + gleak*(V-Eleak)-I)  
+#dV/dt=-1/c*(gKs*mKs^4*(V-EK) + gKf*mKf^4*(fh*hKf+(1-fh)*hKf2)*(V-EK) + gNa*mNa^3*hNa*(V-ENa) + gleak*(V-Eleak)-I + sc*Ipump)  
 
 # soma voltage
 dVm/dt=-1/Cm*(IksVm+IkfVm+gleak*(Vm-Eleak)-I+gaxon*(Vm-Va))
 
 # axon compartment voltage
 dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm))
-  
+
+#Scaling coefficient for pump current
+par sc=1
+
 #slow K  
 # orig = 5.1
 par gKs=1 gaKs=700
@@ -62,7 +65,7 @@ mtauKs(V) = 2.03 + 1.96 /(1+exp((V-29.83)/3.32))
 dmKsVm/dt=(minfKs(Vm)-mKsVm)/mtauKs(Vm)  
 dmKsVa/dt=(minfKs(Va)-mKsVa)/mtauKs(Va)  
 IksVm=gKs*mKsVm^4*(Vm-EK)  
-IksVa=gaKs*mKsVa^4*(Va-EK)  
+IksVa=gaKs*mKsVa^4*(Va-EK)
 aux IksVm=IksVm
 aux IksVa=IksVa
 
