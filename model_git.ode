@@ -57,6 +57,13 @@ dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm))
 #Scaling coefficient for pump current
 par sc=1
 
+#Ipump 
+#structure copied from Krishnan et al. (2015) model
+#do we need an initial value, if so how does this work?
+#Need to: Include A, Include Imax
+Ipump=3*Imax*A-2*Imax*A
+
+
 #slow K  
 # orig = 5.1
 par gKs=1 gaKs=700
