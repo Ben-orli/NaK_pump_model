@@ -58,6 +58,9 @@ dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm))
 par sc=1
 
 #Need to init several Ipump values
+#Parameters/Variables with pu at end of name are same as in Krishnan et al (2015) withouth pu
+#Parameters as in Krishnan et al (2015), how are units interacting with XPP?
+par kpu=10 Fpu=96489 dpu=0.15 Koalpha=2.5 Naialpha=20
 
 #Ipump 
 #structure copied from Krishnan et al. (2015) model
@@ -70,7 +73,6 @@ Ipump=3*Imax*pump-2*Imax*pump
 pump=(1/(1+Koalpha*Ko))^2*(1/(1+Naialpha*Nai))^3
 
 #Ion concentration dynamics
-#Parameters/Variables with pu at end of name are same as in Krishnan et al (2015) withouth pu
 
 #[K]outside
 #Total Intrinsic K current: TIK
