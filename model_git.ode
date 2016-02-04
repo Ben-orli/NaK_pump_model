@@ -79,8 +79,9 @@ dKo/dt=
 #[Na]inside
 #Total Intrinsic Na: TINa
 #3*Imax*pump: Na pump current
+#Naic: Na concentration in adjacent compartment of same cell
 #dci: diffusion constant inside
-dNai/dt=--kpu/Fpu(TINa+3*Imax*pump)+dci*()
+dNai/dt=--kpu/Fpu(TINa+3*Imax*pump)+dci*(Naic-Nai)
 
 #slow K  
 # orig = 5.1
