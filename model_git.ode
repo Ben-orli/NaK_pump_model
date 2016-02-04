@@ -57,6 +57,8 @@ dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm))
 #Scaling coefficient for pump current
 par sc=1
 
+#Need to init several Ipump values
+
 #Ipump 
 #structure copied from Krishnan et al. (2015) model
 #do we need an initial value, if so how does this work?
@@ -67,7 +69,18 @@ Ipump=3*Imax*pump-2*Imax*pump
 #Defined by [K]outside and [Na]inside
 pump=(1/(1+Koalpha*Ko))^2*(1/(1+Naialpha*Nai))^3
 
+#Ion concentration dynamics
+#Parameters/Variables with pu at end of name are same as in Krishnan et al (2015) withouth pu
 
+#[K]outside
+#dci: diffusion constant inside
+dKo/dt=
+
+#[Na]inside
+#Total Intrinsic Na: TINa
+#3*Imax*pump: Na pump current
+#dci: diffusion constant inside
+dNai/dt=--kpu/Fpu(TINa+3*Imax*pump)+dci*()
 
 #slow K  
 # orig = 5.1
