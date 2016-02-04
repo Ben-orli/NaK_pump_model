@@ -46,10 +46,10 @@
 
 # TODO: make mlab figure and attach to bif.lyx
   
-#dV/dt=-1/c*(gKs*mKs^4*(V-EK) + gKf*mKf^4*(fh*hKf+(1-fh)*hKf2)*(V-EK) + gNa*mNa^3*hNa*(V-ENa) + gleak*(V-Eleak)-I + sc*Ipump)  
+#dV/dt=-1/c*(gKs*mKs^4*(V-EK) + gKf*mKf^4*(fh*hKf+(1-fh)*hKf2)*(V-EK) + gNa*mNa^3*hNa*(V-ENa) + gleak*(V-Eleak)-I)  
 
 # soma voltage
-dVm/dt=-1/Cm*(IksVm+IkfVm+gleak*(Vm-Eleak)-I+gaxon*(Vm-Va))
+dVm/dt=-1/Cm*(IksVm+IkfVm+gleak*(Vm-Eleak)-I+gaxon*(Vm-Va) + sc*Ipump)
 
 # axon compartment voltage
 dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm))
@@ -66,6 +66,8 @@ Ipump=3*Imax*pump-2*Imax*pump
 #Concentration dependent pump variable (called A in Krishnan et al 2015)
 #Defined by [K]outside and [Na]inside
 pump=(1/(1+Koalpha*Ko))^2*(1/(1+Naialpha*Nai))^3
+
+
 
 #slow K  
 # orig = 5.1
