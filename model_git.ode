@@ -60,9 +60,12 @@ par sc=1
 #Ipump 
 #structure copied from Krishnan et al. (2015) model
 #do we need an initial value, if so how does this work?
-#Need to: Include A, Include Imax
-Ipump=3*Imax*A-2*Imax*A
+#Need to include: pump (called A in Krishnan et al 2015), Imax
+Ipump=3*Imax*pump-2*Imax*pump
 
+#Concentration dependent pump variable (called A in Krishnan et al 2015)
+#Defined by [K]outside and [Na]inside
+pump=(1/(1+Koalpha*Ko))^2*(1/(1+Naialpha*Nai))^3
 
 #slow K  
 # orig = 5.1
