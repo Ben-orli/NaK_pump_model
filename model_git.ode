@@ -73,15 +73,18 @@ pump=(1/(1+Koalpha*Ko))^2*(1/(1+Naialpha*Nai))^3
 #Parameters/Variables with pu at end of name are same as in Krishnan et al (2015) withouth pu
 
 #[K]outside
-#dci: diffusion constant inside
-dKo/dt=
+#Total Intrinsic K current: TIK
+#-2*Imax*pump: K pump current
+#dco: diffusion constant outside
+#Excludes 2nd and 3rd terms from Krishnan et al. 2015, Glial and neighbering cell concentrations. 
+dKo/dt=(kpu/Fpu*dpu)*(TIK-2*Imax*pump)+dco*(Koc-Ko)
 
 #[Na]inside
-#Total Intrinsic Na: TINa
+#Total Intrinsic Na current: TINa
 #3*Imax*pump: Na pump current
 #Naic: Na concentration in adjacent compartment of same cell
 #dci: diffusion constant inside
-dNai/dt=--kpu/Fpu(TINa+3*Imax*pump)+dci*(Naic-Nai)
+dNai/dt=-(kpu/Fpu)*(TINa+3*Imax*pump)+dci*(Naic-Nai)
 
 #slow K  
 # orig = 5.1
