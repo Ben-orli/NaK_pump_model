@@ -52,25 +52,28 @@
 dVm/dt=-1/Cm*(IksVm+IkfVm+gleak*(Vm-Eleak)-I+gaxon*(Vm-Va))
 
 # axon compartment voltage
-dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm)+ sc*Ipump)
+dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm))
+
+# axon with pump
+# dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm)+ sc*Ipump)
 
 #Scaling coefficient for pump current
-par sc=1
+#par sc=1
 
 #NEED TO INIT SEVERAL Ipump VALUES
 #Parameters/Variables with pu at end of name are same as in Krishnan et al (2015) withouth pu
 #Parameters as in Krishnan et al (2015), how are units interacting with XPP?
-par kpu=10 Fpu=96489 dpu=0.15 Koalpha=2.5 Naialpha=20
+#par kpu=10 Fpu=96489 dpu=0.15 Koalpha=2.5 Naialpha=20
 
 #Ipump 
 #structure copied from Krishnan et al. (2015) model
 #do we need an initial value, if so how does this work?
 #Need to include: pump (called A in Krishnan et al 2015), Imax
-Ipump=3*Imax*pump-2*Imax*pump
+#Ipump=3*Imax*pump-2*Imax*pump
 
 #Concentration dependent pump variable (called A in Krishnan et al 2015)
 #Defined by [K]outside and [Na]inside
-pump=(1/(1+Koalpha*Ko))^2*(1/(1+Naialpha*Nai))^3
+#pump=(1/(1+Koalpha*Ko))^2*(1/(1+Naialpha*Nai))^3
 
 #Ion concentration dynamics
 
@@ -79,14 +82,14 @@ pump=(1/(1+Koalpha*Ko))^2*(1/(1+Naialpha*Nai))^3
 #-2*Imax*pump: K pump current
 #dco: diffusion constant outside
 #Excludes 2nd and 3rd terms from Krishnan et al. 2015, Glial and neighbering cell concentrations. 
-dKo/dt=(kpu/Fpu*dpu)*(TIK-2*Imax*pump)+dco*(Koc-Ko)
+#dKo/dt=(kpu/Fpu*dpu)*(TIK-2*Imax*pump)+dco*(Koc-Ko)
 
 #[Na]inside
 #Total Intrinsic Na current: TINa
 #3*Imax*pump: Na pump current
 #Naic: Na concentration in adjacent compartment of same cell
 #dci: diffusion constant inside
-dNai/dt=-(kpu/Fpu)*(TINa+3*Imax*pump)+dci*(Naic-Nai)
+#dNai/dt=-(kpu/Fpu)*(TINa+3*Imax*pump)+dci*(Naic-Nai)
 
 #slow K  
 # orig = 5.1
