@@ -57,6 +57,8 @@ dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm))
 # axon with pump
 # dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm)+ sc*Ipump)
 
+#Include dynamic [K] and [Na] concentration reading from ion channels.
+
 #Scaling coefficient for pump current
 #par sc=1
 
