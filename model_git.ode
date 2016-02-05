@@ -49,15 +49,15 @@
 #dV/dt=-1/c*(gKs*mKs^4*(V-EK) + gKf*mKf^4*(fh*hKf+(1-fh)*hKf2)*(V-EK) + gNa*mNa^3*hNa*(V-ENa) + gleak*(V-Eleak)-I)  
 
 # soma voltage
-dVm/dt=-1/Cm*(IksVm+IkfVm+gleak*(Vm-Eleak)-I+gaxon*(Vm-Va) + sc*Ipump)
+dVm/dt=-1/Cm*(IksVm+IkfVm+gleak*(Vm-Eleak)-I+gaxon*(Vm-Va))
 
 # axon compartment voltage
-dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm))
+dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm)+ sc*Ipump)
 
 #Scaling coefficient for pump current
 par sc=1
 
-#Need to init several Ipump values
+#NEED TO INIT SEVERAL Ipump VALUES
 #Parameters/Variables with pu at end of name are same as in Krishnan et al (2015) withouth pu
 #Parameters as in Krishnan et al (2015), how are units interacting with XPP?
 par kpu=10 Fpu=96489 dpu=0.15 Koalpha=2.5 Naialpha=20
