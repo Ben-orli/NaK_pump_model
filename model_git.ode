@@ -63,6 +63,9 @@ dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm))
 init NaI=0.015
 par Ipump=0 volume=157.76*10^-15
 dNai/dt=-(Ina+Ealeak*30/130-3*Ipump)/96 485.3329*volume
+init Ko=0.015
+par Ipump=0 volume=157.76*10^-15
+dKo/dt=-(IkfVm+IKsVm+Ealeak*10/13-3*Ipump)/96 485.3329*volume
 
 #Scaling coefficient for pump current
 #par sc=1
@@ -76,7 +79,7 @@ dNai/dt=-(Ina+Ealeak*30/130-3*Ipump)/96 485.3329*volume
 #structure copied from Krishnan et al. (2015) model
 #do we need an initial value, if so how does this work?
 #Need to include: pump (called A in Krishnan et al 2015), Imax
-#Ipump=3*Imax*pump-2*Imax*pump
+#Ipump=Imax*pump
 
 #Concentration dependent pump variable (called A in Krishnan et al 2015)
 #Defined by [K]outside and [Na]inside
