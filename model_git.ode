@@ -58,10 +58,10 @@ dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm))
 # dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm)+ sc*Ipump)
 
 #Include dynamic [K] and [Na] concentration reading from ion channels.
-#Pump current is zero until pump model included
+#Pump current is zero until pump model included.
 #concentration in Molar
 init NaI=0.015
-par Ipump=0 
+par Ipump=0 volume=157.76*10^-15
 dNai/dt=(Ina+Ealeak*30/130-3*Ipump)/96 485.3329*volume
 
 #Scaling coefficient for pump current
