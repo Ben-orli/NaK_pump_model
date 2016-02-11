@@ -52,13 +52,14 @@
 dVm/dt=-1/Cm*(IksVm+IkfVm+Ileak-I+gaxon*(Vm-Va))
 
 # axon compartment voltage
-dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm))
+dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+Ialeak+gaxon*(Va-Vm))
 
 # axon with pump
 # dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm)+ sc*Ipump)
 
 #Leak currents
 Ileak=gleak*(Vm-Eleak)
+Ialeak=galeak*(Va-Ealeak)
 
 #Include dynamic [K] and [Na] concentration reading from ion channels.
 #Pump current is zero until pump model included.
