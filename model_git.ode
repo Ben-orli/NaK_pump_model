@@ -49,7 +49,7 @@
 #dV/dt=-1/c*(gKs*mKs^4*(V-EK) + gKf*mKf^4*(fh*hKf+(1-fh)*hKf2)*(V-EK) + gNa*mNa^3*hNa*(V-ENa) + gleak*(V-Eleak)-I)  
 
 # soma voltage
-dVm/dt=-1/Cm*(IksVm+IkfVm+gleak*(Vm-Eleak)-I+gaxon*(Vm-Va))
+dVm/dt=-1/Cm*(IksVm+IkfVm+Ileak-I+gaxon*(Vm-Va))
 
 # axon compartment voltage
 dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm))
@@ -57,14 +57,17 @@ dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm))
 # axon with pump
 # dVa/dt=-1/Ca*(IksVa+IkfVa+Ina+Inap+galeak*(Va-Ealeak)+gaxon*(Va-Vm)+ sc*Ipump)
 
+#Leak currents
+Ileak=gleak*(Vm-Eleak)
+
 #Include dynamic [K] and [Na] concentration reading from ion channels.
 #Pump current is zero until pump model included.
 #concentration in Molar
 init NaI=0.015
 par Ipump=0 volume=157.76*10^-15
-dNai/dt=-(Ina+Ealeak*30/130-3*Ipump)/96 485.3329*volume
+dNai/dt=-(Ina+Ealeak*30/130-3*Ipump)/(96485.3329*volume)
 init Ki=0.15
-dKi/dt=-(IkfVm+IKsVm+Ealeak*10/13-3*Ipump)/96 485.3329*volume
+dKi/dt=-(IkfVm+IKsVm+Ealeak*10/13+2*Ipump)/(96485.3329*volume)
 
 #Scaling coefficient for pump current
 #par sc=1
