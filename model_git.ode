@@ -66,9 +66,9 @@ Ialeak=galeak*(Va-Ealeak)
 #concentration in Molar
 init NaI=0.015
 par Ipump=0 volume=157.76*10^-15
-dNai/dt=-(Ina+Ealeak*30/130-3*Ipump)/(96485.3329*volume)
+dNai/dt=-(Ina+Inap+Ialeak*30/130-3*Ipump)/(96485.3329*volume)
 init Ki=0.15
-dKi/dt=-(IkfVm+IKsVm+Ealeak*10/13+2*Ipump)/(96485.3329*volume)
+dKi/dt=-(IkfVa+IKsVa+Ialeak*10/13+2*Ipump)/(96485.3329*volume)
 
 #Scaling coefficient for pump current
 #par sc=1
